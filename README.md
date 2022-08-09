@@ -38,3 +38,4 @@ fig = ts.visualize_tree_as_sunburst(model = model)
 ```
 
 ### Decision Tree of diamond data
+![Example Decision Tree Sunburst](/figures/example_sunburst.png)
