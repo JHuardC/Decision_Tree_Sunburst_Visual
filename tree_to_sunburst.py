@@ -23,7 +23,24 @@ import numpy as np
 from collections import defaultdict
 import plotly.express as px
 
-def visualize_tree_as_sunburst(model: BaseDecisionTree) -> Figure:
+def visualize_tree_as_sunburst(
+    model: BaseDecisionTree,
+    color_continuous_scale=None, 
+    range_color=None, 
+    color_continuous_midpoint=None, 
+    color_discrete_sequence=None, 
+    color_discrete_map=None, 
+    hover_name=None, 
+    hover_data=None, 
+    custom_data=None, 
+    labels=None, 
+    title=None, 
+    template=None, 
+    width=None, 
+    height=None, 
+    branchvalues = 'total', 
+    maxdepth=None
+    ) -> Figure:
 
     # this list will be used to create a structured array of arguments
     sunburst_args = [
@@ -117,7 +134,21 @@ def visualize_tree_as_sunburst(model: BaseDecisionTree) -> Figure:
         names = all_node_details['split_name'], 
         values = all_node_details['value'], 
         color = all_node_details['colour'],
-        branchvalues = 'total'
-    )
+        branchvalues = branchvalues,
+        color_continuous_scale = color_continuous_scale, 
+        range_color = range_color, 
+        color_continuous_midpoint = color_continuous_midpoint, 
+        color_discrete_sequence = color_discrete_sequence, 
+        color_discrete_map = color_discrete_map, 
+        hover_name = hover_name, 
+        hover_data = hover_data, 
+        custom_data = custom_data, 
+        labels = labels, 
+        title = title, 
+        template = template, 
+        width = width, 
+        height = height,
+        maxdepth = maxdepth
+        )
 
     return fig
