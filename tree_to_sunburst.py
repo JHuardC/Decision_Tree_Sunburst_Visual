@@ -21,7 +21,7 @@ from sklearn.tree import BaseDecisionTree
 from plotly.graph_objects import Figure
 import numpy as np
 from collections import defaultdict
-import plotly.express as px
+from plotly.express import sunburst
 
 def visualize_tree_as_sunburst(
     model: BaseDecisionTree,
@@ -226,7 +226,7 @@ def visualize_tree_as_sunburst(
 
     all_node_details = np.concatenate(all_node_details)
 
-    fig = px.sunburst(
+    return sunburst(
         data_frame = all_node_details,
         parents = 'parent_id', 
         ids = 'split_id', 
@@ -248,6 +248,4 @@ def visualize_tree_as_sunburst(
         width = width, 
         height = height,
         maxdepth = maxdepth
-        )
-
-    return fig
+    )
